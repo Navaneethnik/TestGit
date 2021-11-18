@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    //def Jira_ID = ${env.Jira_ID}
+    environment {
+        jiraUsername = 'wifi-ci-agent'
+        jiraPasswd = '52hc2@DNK6'   
+        Jira_ID = "${env.Jira_ID}"
+        fixbuild = "RS9116." + "${env.major}" + "." + "${env.minor}" + "." + "${env.build}" + "." + "${env.patch}"
+    }
+    stages {
+        stage('smoketest_stage') {
+            steps {
+                echo 'smoketest'
+            }
+        }
+        stage('JIRA_UPDATE'){
+            
+            steps{
+                echo " $Jira_ID"
+                git branch: 'main', credentialsId: '7bd7feb4-1886-45fb-808f-135874ad9c70',url: 'https://github.com/Navaneethnik/script.git'
+                sh ' python3 merged_script1.py $jiraUsername $jiraPasswd $Jira_ID $fixbuild '
+                
+                
+                
+            }
+        }
+    }
+}
