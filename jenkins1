@@ -8,7 +8,7 @@ pipeline {
         fixbuild = "RS9116." + "${env.major}" + "." + "${env.minor}" + "." + "${env.build}" + "." + "${env.patch}"
     }
     stages {
-        stage('smoketest_stage') {
+        stage('smoketest_stage_2') {
             steps {
                 echo 'smoketest'
             }
