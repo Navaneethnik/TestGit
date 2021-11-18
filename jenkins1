@@ -17,7 +17,7 @@ pipeline {
             
             steps{
                 echo " $Jira_ID"
-                git branch: 'main', credentialsId: '7bd7feb4-1886-45fb-808f-135874ad9c70',url: 'https://github.com/Navaneethnik/script.git'
+                //git branch: 'main', credentialsId: '7bd7feb4-1886-45fb-808f-135874ad9c70',url: 'https://github.com/Navaneethnik/script.git'
                 sh ' python3 merged_script1.py $jiraUsername $jiraPasswd $Jira_ID $fixbuild '
                 
                 
